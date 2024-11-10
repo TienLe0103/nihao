@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="twitter:description" content="click = bay acc">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src" content="index-meta.png">
+    <meta property="twitter:image" content="index-meta.png" />
+    <meta property="og:image" content="index-meta.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TienLe0103">
+    <meta property="og:description" content="click = bay acc">
+    <meta name="twitter:title" content="TienLe0103">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <meta name="description" content="click = bay acc">
+    <title>Lê Huỳnh Tiến</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img id="heartImage" src="heart_letter.png" alt="Heart Letter">
+    <div class="container">
+        <h1>Nihao 你好 你好 你好 你好 你好 你好 你好</h1>
+        <label for="classSelect">Chọn lớp:</label>
+        <select id="classSelect">
+            <option value="0">-- Chọn lớp --</option>
+            <option value="1">10TO</option>
+            <option value="2">10TI</option>
+            <option value="3">10LI</option>
+            <option value="4">10HO</option>
+            <option value="5">10SI</option>
+            <option value="6">10VA</option>
+            <option value="7">10SU</option>
+            <option value="8">10DI</option>
+            <option value="9">10TA</option>
+            <option value="10">11TO</option>
+            <option value="11">11TI</option>
+            <option value="12">11LI</option>
+            <option value="13">11HO</option>
+            <option value="14">11SI</option>
+            <option value="15">11VA</option>
+            <option value="16">11SD</option>
+            <option value="17">11TA</option>
+            <option value="18">12TO</option>
+            <option value="19">12LT</option>
+            <option value="20">12HO</option>
+            <option value="21">12SI</option>
+            <option value="22">12VA</option>
+            <option value="23">12SD</option>
+            <option value="24">12TA</option>
+            <option value="25">12A</option>
+        </select>
+        <button onclick="processClass()">Xử lý</button>
+    </div>
+    <div id="myModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="result">Kết quả chấm lớp sẽ hiển thị tại đây.</div>
+            <button id="closeBottom" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+    <script>
+        const classes = [
+            "", "10TO", "10TI", "10LI", "10HO", "10SI", "10VA", "10SU", "10DI", "10TA",
+            "11TO", "11TI", "11LI", "11HO", "11SI", "11VA", "11SD", "11TA", "12TO", "12LT",
+            "12HO", "12SI", "12VA", "12SD", "12TA", "12A"
+        ];
+        const w = 10;
+        function processClass() {
+            const selectedClassIndex = document.getElementById('classSelect').value;
+            const resultContainer = document.getElementById('result');
+            if (selectedClassIndex == "0") {
+                resultContainer.innerHTML = "Vui lòng chọn lớp!";
+                return;
+            }
+            const classIndex = parseInt(selectedClassIndex);
+            const class1 = classes[classIndex];
+            const class2 = classes[(classIndex + w + 25) % 25];
+            if ((classIndex + w + 25) % 25 == 0) {
+                resultContainer.innerHTML = class1 + " chấm " + classes[25];
+            } else {
+                resultContainer.innerHTML = class1 + " chấm " + class2;
+            }
+            document.getElementById("myModal").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
