@@ -4,26 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
-    <!-- Open Graph Tags for link preview -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="TienLe0103">
     <meta property="og:description" content="click = bay acc">
     <meta property="og:image" content="image.png">
-    
-    <!-- Twitter Card Tags for link preview -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TienLe0103">
     <meta name="twitter:description" content="click = bay acc">
     <meta name="twitter:image" content="image.png">
-
     <link rel="icon" href="logo.jpg" type="image/x-icon">
     <title>Lê Huỳnh Tiến</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .scroll-selector {
             width: 200px;
-            height: 120px; /* Display 5 items */
+            height: 120px;
             overflow: hidden;
             position: relative;
             margin: 20px auto;
@@ -31,37 +26,32 @@
             font-size: 1.2em;
             font-family: Arial, sans-serif;
         }
-
         .scroll-list {
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s;
         }
-
         .scroll-item {
             height: 30px;
-            opacity: 0.2; /* Fainter for outermost items */
+            opacity: 0.2; 
             font-size: 0.7em;
             color: #666;
             transition: opacity 0.3s, font-size 0.3s;
         }
-
         .scroll-item.outer-previous,
         .scroll-item.outer-next {
-            opacity: 0.3; /* Slightly more visible for outer items */
+            opacity: 0.3; 
             font-size: 0.8em;
         }
-
         .scroll-item.previous,
         .scroll-item.next {
-            opacity: 0.6; /* Medium opacity for nearby items */
+            opacity: 0.6; 
             font-size: 1em;
         }
-
         .scroll-item.active {
             opacity: 1;
-            font-size: 1.5em; /* Enlarged font for selected item */
+            font-size: 1.5em; 
             color: #000;
             font-weight: bold;
         }
@@ -98,6 +88,7 @@
             "12HO", "12SI", "12VA", "12SD", "12TA", "12A"
         ];
         let selectedClassIndex = 1;
+        let w = 11;
 
         function initializeScrollList() {
             const scrollList = document.getElementById('scrollList');
@@ -138,26 +129,22 @@
             selectedClassIndex = Math.max(1, Math.min(classes.length - 1, selectedClassIndex + direction));
             updateScroll();
         }
-
         function processClass() {
             const resultContainer = document.getElementById('result');
             const class1 = classes[selectedClassIndex];
-            const class2 = classes[(selectedClassIndex + 10 + 25) % 25];
-            resultContainer.innerHTML = class1 + " chấm " + (class2 || classes[25]);
+            const nextIndex = (selectedClassIndex + w + 25) % 25;
+            const class2 = nextIndex === 0 ? classes[25] : classes[nextIndex];
+            resultContainer.innerHTML = `${class1} chấm ${class2}`;
             document.getElementById("myModal").style.display = "flex";
         }
 
         function closeModal() {
             document.getElementById("myModal").style.display = "none";
         }
-
-        // Mouse scroll event
         document.getElementById('scrollSelector').addEventListener('wheel', (event) => {
             event.preventDefault();
             scroll(event.deltaY > 0 ? 1 : -1);
         });
-
-        // Touch event (for mobile devices)
         let startY;
         document.getElementById('scrollSelector').addEventListener('touchstart', (event) => {
             startY = event.touches[0].clientY;
@@ -170,8 +157,6 @@
                 startY = event.touches[0].clientY;
             }
         });
-
-        // Keyboard arrow event
         document.addEventListener('keydown', (event) => {
             if (event.key === 'ArrowUp') {
                 scroll(-1);
