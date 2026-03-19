@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,8 @@
     <link rel="icon" href="logo.jpg" type="image/x-icon">
     <title>Lê Huỳnh Tiến</title>
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,7 +28,7 @@
             background-color: #f9f7f7;
             color: #112d4e;
         }
-        
+
         .container {
             display: flex;
             flex-direction: column;
@@ -40,7 +42,7 @@
             width: 90%;
             max-width: 500px;
         }
-        
+
         h1 {
             font-size: 32px;
             margin-bottom: 30px;
@@ -52,14 +54,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         label {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
             color: #3f72af;
         }
-        
+
         button {
             font-size: 20px;
             padding: 12px 30px;
@@ -72,17 +74,17 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         button:hover {
             background-color: #112d4e;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         button:active {
             transform: translateY(1px);
         }
-        
+
         .scroll-selector {
             width: 220px;
             height: 140px;
@@ -95,14 +97,14 @@
             box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 10px 0;
         }
-        
+
         .scroll-list {
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        
+
         .scroll-item {
             height: 30px;
             line-height: 30px;
@@ -113,19 +115,19 @@
             width: 100%;
             padding: 0 10px;
         }
-        
+
         .scroll-item.outer-previous,
         .scroll-item.outer-next {
             opacity: 0.3;
             font-size: 0.8em;
         }
-        
+
         .scroll-item.previous,
         .scroll-item.next {
             opacity: 0.6;
             font-size: 1em;
         }
-        
+
         .scroll-item.active {
             opacity: 1;
             font-size: 1.5em;
@@ -133,7 +135,7 @@
             font-weight: bold;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
-        
+
         #weekDisplay {
             text-align: center;
             font-size: 1.3em;
@@ -145,7 +147,7 @@
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
         #myModal {
             display: none;
             position: fixed;
@@ -159,7 +161,7 @@
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
-        
+
         .modal-content {
             background-color: #fff;
             border-radius: 15px;
@@ -172,18 +174,19 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s ease;
         }
-        
+
         @keyframes modalFadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .close-btn {
             position: absolute;
             top: 15px;
@@ -193,11 +196,11 @@
             color: #aaa;
             transition: color 0.2s ease;
         }
-        
+
         .close-btn:hover {
             color: #000;
         }
-        
+
         #result {
             font-size: 32px;
             font-weight: bold;
@@ -206,7 +209,7 @@
             color: #3f72af;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
-        
+
         #closeBottom {
             background: linear-gradient(45deg, #f44336, #d32f2f);
             color: white;
@@ -223,12 +226,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
-        
+
         #closeBottom:hover {
             background: linear-gradient(45deg, #d32f2f, #b71c1c);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-        
+
         #heartImage {
             position: absolute;
             top: 135px;
@@ -238,11 +241,11 @@
             transition: transform 0.3s ease;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
-        
+
         #heartImage:hover {
             transform: scale(1.05);
         }
-        
+
         .selector-indicator {
             position: absolute;
             left: 0;
@@ -255,28 +258,28 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         @media (max-width: 768px) {
             #heartImage {
                 width: 80px;
                 top: 20px;
                 left: 20px;
             }
-            
+
             .container {
                 margin-top: 80px;
                 padding: 15px;
             }
-            
+
             h1 {
                 font-size: 26px;
                 margin-bottom: 20px;
             }
-            
+
             .modal-content {
                 padding: 20px 25px 70px;
             }
-            
+
             #result {
                 font-size: 24px;
                 margin-bottom: 40px;
@@ -284,6 +287,7 @@
         }
     </style>
 </head>
+
 <body>
     <a href="https://www.facebook.com/tienle0103" target="_blank">
         <img id="heartImage" src="heart_letter.png" alt="Heart Letter">
@@ -295,9 +299,9 @@
             <div class="selector-indicator"></div>
             <div class="scroll-list" id="scrollList"></div>
         </div>
-        
+
         <button onclick="processClass()">Check</button>
-        
+
         <p id="weekDisplay">Week: <span id="weekValue"></span></p>
     </div>
     <div id="myModal">
@@ -307,132 +311,117 @@
             <button id="closeBottom" onclick="closeModal()">Đóng</button>
         </div>
     </div>
-<script>
-  const classes = [
-    "", "10TO", "10TI", "10LI", "10HO", "10SI", "10VA", "10SU", "10DI", "10TA1", "10TA2",
-    "11TO", "11TI", "11LI", "11HO", "11SI", "11VA", "11SU", "11DI", "11TA",
-    "12TO", "12TI", "12LI", "12HO", "12SI", "12VA", "12SD", "12TA"
-  ];
+    <script>
+        const classes = [
+            "", "10TO", "10TI", "10LI", "10HO", "10SI", "10VA", "10SU", "10DI", "10TA1", "10TA2",
+            "11TO", "11TI", "11LI", "11HO", "11SI", "11VA", "11SU", "11DI", "11TA",
+            "12TO", "12TI", "12LI", "12HO", "12SI", "12VA", "12SD", "12TA"
+        ];
 
-  let selectedClassIndex = 1;
-  let w = 27;                    // <---------------------------------------------------------
-  const N = classes.length - 1;
+        let selectedClassIndex = 1;
+        let w = 27;                    // <---------------------------------------------------------
+        const N = classes.length - 1;
 
-  function normalizeWeek(week) {
-    return ((week - 1) % N + N) % N + 1;
-  }
+        function normalizeWeek(week) {
+            return ((week - 1) % N + N) % N + 1;
+        }
 
-  function initializeScrollList() {
-    const scrollList = document.getElementById('scrollList');
-    scrollList.innerHTML = '';
-    classes.slice(1).forEach((className, index) => {
-      const item = document.createElement('div');
-      item.className = 'scroll-item';
-      item.innerText = className;
-      if (index + 1 === selectedClassIndex) item.classList.add('active');
-      scrollList.appendChild(item);
-    });
-    updateScroll();
-    document.getElementById('weekValue').innerText = normalizeWeek(w);
-  }
+        function initializeScrollList() {
+            const scrollList = document.getElementById('scrollList');
+            scrollList.innerHTML = '';
+            classes.slice(1).forEach((className, index) => {
+                const item = document.createElement('div');
+                item.className = 'scroll-item';
+                item.innerText = className;
+                if (index + 1 === selectedClassIndex) item.classList.add('active');
+                scrollList.appendChild(item);
+            });
+            updateScroll();
+            document.getElementById('weekValue').innerText = normalizeWeek(w);
+        }
 
-  function updateScroll() {
-    const scrollList = document.getElementById('scrollList');
-    const items = scrollList.getElementsByClassName('scroll-item');
-    Array.from(items).forEach((item, index) => {
-      item.classList.remove('active', 'previous', 'next', 'outer-previous', 'outer-next');
-      if (index === selectedClassIndex - 1) item.classList.add('active');
-      else if (index === selectedClassIndex - 2) item.classList.add('previous');
-      else if (index === selectedClassIndex) item.classList.add('next');
-      else if (index === selectedClassIndex - 3) item.classList.add('outer-previous');
-      else if (index === selectedClassIndex + 1) item.classList.add('outer-next');
-    });
-    scrollList.style.transform = `translateY(${70 - (selectedClassIndex - 1) * 30}px)`;
-  }
+        function updateScroll() {
+            const scrollList = document.getElementById('scrollList');
+            const items = scrollList.getElementsByClassName('scroll-item');
+            Array.from(items).forEach((item, index) => {
+                item.classList.remove('active', 'previous', 'next', 'outer-previous', 'outer-next');
+                if (index === selectedClassIndex - 1) item.classList.add('active');
+                else if (index === selectedClassIndex - 2) item.classList.add('previous');
+                else if (index === selectedClassIndex) item.classList.add('next');
+                else if (index === selectedClassIndex - 3) item.classList.add('outer-previous');
+                else if (index === selectedClassIndex + 1) item.classList.add('outer-next');
+            });
+            scrollList.style.transform = `translateY(${70 - (selectedClassIndex - 1) * 30}px)`;
+        }
 
-  function scroll(direction) {
-    selectedClassIndex = Math.max(1, Math.min(N, selectedClassIndex + direction));
-    updateScroll();
-  }
+        function scroll(direction) {
+            selectedClassIndex = Math.max(1, Math.min(N, selectedClassIndex + direction));
+            updateScroll();
+        }
 
-  function processClass() {
-    const resultContainer = document.getElementById('result');
-    const class1 = classes[selectedClassIndex];
-    const effectiveW = normalizeWeek(w);
-    const nextIndex = ((selectedClassIndex - 1 + effectiveW) % N) + 1;
-    const class2 = classes[nextIndex];
-    resultContainer.innerHTML = `${class1} chấm ${class2}`;
-    document.getElementById("myModal").style.display = "flex";
-  }
+        function processClass() {
+            const resultContainer = document.getElementById('result');
+            const class1 = classes[selectedClassIndex];
 
-  function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-  }
+            let effectiveW = normalizeWeek(w);
 
-  document.getElementById('scrollSelector').addEventListener('wheel', (event) => {
-    event.preventDefault();
-    scroll(event.deltaY > 0 ? 1 : -1);
-  });
+            if (effectiveW === 27) {
+                effectiveW += 1;
+            }
 
-  let startY;
-  document.getElementById('scrollSelector').addEventListener('touchstart', (event) => {
-    startY = event.touches[0].clientY;
-  });
+            const nextIndex = ((selectedClassIndex - 1 + effectiveW) % N) + 1;
+            const class2 = classes[nextIndex];
 
-  document.getElementById('scrollSelector').addEventListener('touchmove', (event) => {
-    event.preventDefault();
-    const deltaY = event.touches[0].clientY - startY;
-    if (Math.abs(deltaY) > 20) {
-      scroll(deltaY > 0 ? -1 : 1);
-      startY = event.touches[0].clientY;
-    }
-  });
+            resultContainer.innerHTML = `${class1} chấm ${class2}`;
+            document.getElementById("myModal").style.display = "flex";
+        }
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowUp') scroll(-1);
-    else if (event.key === 'ArrowDown') scroll(1);
-  });
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
 
-  document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('scroll-item')) {
-      const items = Array.from(document.getElementsByClassName('scroll-item'));
-      const newIndex = items.indexOf(event.target) + 1;
-      if (newIndex !== selectedClassIndex) {
-        selectedClassIndex = newIndex;
-        updateScroll();
-      }
-    }
-  });
+        document.getElementById('scrollSelector').addEventListener('wheel', (event) => {
+            event.preventDefault();
+            scroll(event.deltaY > 0 ? 1 : -1);
+        });
 
-  window.onload = function () {
-    initializeScrollList();
-    document.querySelector('.container').style.opacity = '0';
-    document.querySelector('.container').style.transition = 'opacity 0.5s ease';
-    setTimeout(() => { document.querySelector('.container').style.opacity = '1'; }, 100);
-  };
-      </script>
+        let startY;
+        document.getElementById('scrollSelector').addEventListener('touchstart', (event) => {
+            startY = event.touches[0].clientY;
+        });
+
+        document.getElementById('scrollSelector').addEventListener('touchmove', (event) => {
+            event.preventDefault();
+            const deltaY = event.touches[0].clientY - startY;
+            if (Math.abs(deltaY) > 20) {
+                scroll(deltaY > 0 ? -1 : 1);
+                startY = event.touches[0].clientY;
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') scroll(-1);
+            else if (event.key === 'ArrowDown') scroll(1);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('scroll-item')) {
+                const items = Array.from(document.getElementsByClassName('scroll-item'));
+                const newIndex = items.indexOf(event.target) + 1;
+                if (newIndex !== selectedClassIndex) {
+                    selectedClassIndex = newIndex;
+                    updateScroll();
+                }
+            }
+        });
+
+        window.onload = function () {
+            initializeScrollList();
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transition = 'opacity 0.5s ease';
+            setTimeout(() => { document.querySelector('.container').style.opacity = '1'; }, 100);
+        };
+    </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
