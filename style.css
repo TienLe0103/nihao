@@ -1,11 +1,14 @@
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: relative; 
+    position: relative;
+    background-color: #f9f7f7;
+    color: #112d4e;
 }
 
 .container {
@@ -13,21 +16,120 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
 }
 
 h1 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #3f72af;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    background: linear-gradient(45deg, #3f72af, #ff9a8b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-select, button {
-    font-size: 20px; 
-    padding: 12px;
-    margin: 15px;
+label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #3f72af;
 }
 
-/* Modal */
+button {
+    font-size: 20px;
+    padding: 12px 30px;
+    margin: 25px 0;
+    background-color: #3f72af;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #112d4e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.scroll-selector {
+    width: 220px;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.scroll-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.scroll-item {
+    height: 30px;
+    line-height: 30px;
+    opacity: 0.2;
+    font-size: 0.7em;
+    color: #666;
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.scroll-item.outer-previous,
+.scroll-item.outer-next {
+    opacity: 0.3;
+    font-size: 0.8em;
+}
+
+.scroll-item.previous,
+.scroll-item.next {
+    opacity: 0.6;
+    font-size: 1em;
+}
+
+.scroll-item.active {
+    opacity: 1;
+    font-size: 1.5em;
+    color: #3f72af;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#weekDisplay {
+    text-align: center;
+    font-size: 1.3em;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background: linear-gradient(45deg, #FFC0CB, #ff9a8b);
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 #myModal {
     display: none;
     position: fixed;
@@ -35,30 +137,46 @@ select, button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 15px;
     width: 90%;
     max-width: 800px;
-    padding: 20px 40px 60px;
+    padding: 30px 40px 80px;
     text-align: center;
     position: relative;
     box-sizing: border-box;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     font-size: 30px;
     cursor: pointer;
     color: #aaa;
+    transition: color 0.2s ease;
 }
 
 .close-btn:hover {
@@ -66,48 +184,86 @@ select, button {
 }
 
 #result {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: #3f72af;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #closeBottom {
-    background-color: #f44336;
+    background: linear-gradient(45deg, #f44336, #d32f2f);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 18px;
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 120px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #closeBottom:hover {
-    background-color: #d32f2f;
+    background: linear-gradient(45deg, #d32f2f, #b71c1c);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #heartImage {
     position: absolute;
-    top: 135px;  
-    /* right: 20px;  */
+    top: 135px;
     left: 10px;
     width: 150px;
     height: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+#heartImage:hover {
+    transform: scale(1.05);
+}
+
+.selector-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 40px;
+    background-color: rgba(63, 114, 175, 0.1);
+    border-radius: 8px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 @media (max-width: 768px) {
     #heartImage {
-        /* position: relative; */
-        margin-top: 20px; 
-        width: 80px; 
+        width: 80px;
+        top: 20px;
+        left: 20px;
     }
 
     .container {
-        margin-top: 10px; 
+        margin-top: 80px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .modal-content {
+        padding: 20px 25px 70px;
+    }
+
+    #result {
+        font-size: 24px;
+        margin-bottom: 40px;
     }
 }
