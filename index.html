@@ -319,7 +319,7 @@
         ];
 
         let selectedClassIndex = 1;
-        let w = 28;                    // <---------------------------------------------------------
+        let w = 29;                           // <---------------------------------------------------------
         const N = classes.length - 1;
 
         function normalizeWeek(week) {
@@ -337,8 +337,8 @@
                 scrollList.appendChild(item);
             });
             updateScroll();
-            document.getElementById('weekValue').innerText = w; // UI
-            let effectiveW = normalizeWeek(w);                  // for cal
+            document.getElementById('weekValue').innerText = w;         // UI
+            let effectiveW = normalizeWeek(w);                          // for cal
         }
 
         function updateScroll() {
@@ -364,13 +364,12 @@
             const resultContainer = document.getElementById('result');
             const class1 = classes[selectedClassIndex];
 
-            let effectiveW = normalizeWeek(w);
+            let shift = w;
 
-            if (effectiveW === 27) {
-                effectiveW += 1;
-            }
+            let skip = Math.floor((shift - 1) / (N - 1));
 
-            const nextIndex = ((selectedClassIndex - 1 + effectiveW) % N) + 1;
+            let nextIndex = ((selectedClassIndex - 1 + shift + skip) % N) + 1;
+
             const class2 = classes[nextIndex];
 
             resultContainer.innerHTML = `${class1} chấm ${class2}`;
