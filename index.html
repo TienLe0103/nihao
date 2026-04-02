@@ -337,7 +337,8 @@
                 scrollList.appendChild(item);
             });
             updateScroll();
-            document.getElementById('weekValue').innerText = normalizeWeek(w);
+            document.getElementById('weekValue').innerText = w; // UI
+            let effectiveW = normalizeWeek(w);                  // for cal
         }
 
         function updateScroll() {
