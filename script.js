@@ -24,7 +24,7 @@ function initializeScrollList() {
     });
     updateScroll();
     document.getElementById('weekValue').innerText = w;         // UI
-    let effectiveW = normalizeWeek(w) + 1;                          // for cal
+    // let effectiveW = normalizeWeek(w);                          // for cal
 }
 
 function updateScroll() {
@@ -50,7 +50,8 @@ function processClass() {
     const resultContainer = document.getElementById('result');
     const class1 = classes[selectedClassIndex];
 
-    let shift = w;
+    // let shift = w;
+    let shift = w + 1;
 
     let skip = Math.floor((shift - 1) / (N - 1));
 
