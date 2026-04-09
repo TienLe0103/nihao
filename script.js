@@ -5,7 +5,7 @@ const classes = [
 ];
 
 let selectedClassIndex = 1;
-let w = 29;                           // <---------------------------------------------------------
+let w = 30;                           // <---------------------------------------------------------
 const N = classes.length - 1;
 
 function normalizeWeek(week) {
@@ -24,7 +24,7 @@ function initializeScrollList() {
     });
     updateScroll();
     document.getElementById('weekValue').innerText = w;         // UI
-    let effectiveW = normalizeWeek(w);                          // for cal
+    let effectiveW = normalizeWeek(w) + 1;                          // for cal
 }
 
 function updateScroll() {
