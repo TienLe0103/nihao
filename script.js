@@ -5,7 +5,7 @@ const classes = [
 ];
 
 let selectedClassIndex = 1;
-let w = 31;                           // <---------------------------------------------------------
+let w = 32;                           // <---------------------------------------------------------
 const N = classes.length - 1;
 
 function normalizeWeek(week) {
